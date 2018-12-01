@@ -1,4 +1,5 @@
-var data = [{
+function getData() {
+  let data = [{
     datetime: "1/1/2010",
     city: "benton",
     state: "ar",
@@ -997,4 +998,8 @@ var data = [{
     durationMinutes: "4 minutes",
     comments: "Bright orange object&#44 rapid speed and direction changes .."
   }
-];
+  ];
+  return data;
+}
+
+export { getData };
