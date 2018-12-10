@@ -18,63 +18,73 @@ let stateDD = document.querySelector('.states');
 let cityDD = document.querySelector('.cities');
 
 // initialize global event listeners
-countryDD.addEventListener("click", getFilterType);
-stateDD.addEventListener("click", getFilterType);
-cityDD.addEventListener("click", getFilterType);
+// countryDD.addEventListener("click", getFilterType);
+// stateDD.addEventListener("click", getFilterType);
+// cityDD.addEventListener("click", getFilterType);
 
 // generate rows for unfiltered data set upon initial page load
 generateRows(data);
 
 // generate dropdown lists
 // TODO: sort alphabetically
-distinctCities.forEach(i => {
-  let cityFilter = document.getElementById('city-filter');
-  generateDDItem(cityFilter, i);
-});
-distinctStates.forEach(i => {
-  let stateFilter = document.getElementById('state-filter');
-  generateDDItem(stateFilter, i);
-});
-distinctCountries.forEach(i => {
-  let countryFilter = document.getElementById('country-filter');
-  generateDDItem(countryFilter, i);
-});
+// distinctCities.forEach(i => {
+//   let cityFilter = document.getElementById('city-filter');
+//   generateDDItem(cityFilter, i);
+// });
+// distinctStates.forEach(i => {
+//   let stateFilter = document.getElementById('state-filter');
+//   generateDDItem(stateFilter, i);
+// });
+// distinctCountries.forEach(i => {
+//   let countryFilter = document.getElementById('country-filter');
+//   generateDDItem(countryFilter, i);
+// });
 
 // determine which filter is being used
-function getFilterType(e) {
-  let filterClicked = e.target.innerText.toLowerCase();
-  return filterClicked;
-}
+// function getFilterType(e) {
+//   let filterClicked = e.target.innerText.toLowerCase();
+//   return filterClicked;
+// }
 
-// filter data 
-function handleDDItemClick(e) {
-  // TODO: filter by state/country
-  e.stopPropagation();
+// filter data
+// function handleDDItemClick(e) {
+//   // TODO: filter by state/country
+//   e.stopPropagation();
 
-  let filterClicked = getFilterType(e);
-  console.log(filterClicked);
+//   let filterClicked = getFilterType(e);
+//   console.log(filterClicked);
 
-  let clicked = e.target.innerHTML;
-  let cityElements = document.querySelectorAll('.city');
+//   let clicked = e.target.innerHTML;
+//   let cityElements = document.querySelectorAll('.city');
 
-  cityElements.forEach(c => {
-    if (clicked === c.innerHTML) {
-      dataTable.innerHTML = ``;
-      let filteredData = data.filter(x => x.city === c.innerHTML);
-      generateRows(filteredData)
-    }
-  });
-}
+//   cityElements.forEach(c => {
+//     if (clicked === c.innerHTML) {
+//       dataTable.innerHTML = ``;
+//       let filteredData = data.filter(x => x.city === c.innerHTML);
+//       generateRows(filteredData)
+//     }
+//   });
+// }
+
+$('input[name="dates"]').daterangepicker({
+    singleDatePicker: true,
+    startDate: data[0].datetime,
+    endDate: data[data.length-1].datetime
+}, function(start, end, label) {
+    let filterData = data.filter(x => x.datetime === start.format('M/D/YYYY'))
+    dataTable.innerHTML = ``;
+    generateRows(filterData);
+});
 
 // helper functions
-function generateDDItem(e, i) {
-  let item = document.createElement('button');
-  item.setAttribute("class", "dropdown-item");
-  item.setAttribute("type", "button");
-  item.innerHTML = `<button class="dropdown-item" type="button">${i}</button>`;
-  item.addEventListener('click', handleDDItemClick)
-  e.appendChild(item)
-}
+// function generateDDItem(e, i) {
+//   let item = document.createElement('button');
+//   item.setAttribute("class", "dropdown-item");
+//   item.setAttribute("type", "button");
+//   item.innerHTML = `<button class="dropdown-item" type="button">${i}</button>`;
+//   item.addEventListener('click', handleDDItemClick)
+//   e.appendChild(item)
+// }
 
 function generateRows(data) {
   data.forEach(d => {
