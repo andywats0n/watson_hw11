@@ -18,14 +18,15 @@ let stateDD = document.querySelector('.states');
 let cityDD = document.querySelector('.cities');
 
 // initialize global event listeners
-countryDD.addEventListener("click", handleDDClick);
-stateDD.addEventListener("click", handleDDClick);
-cityDD.addEventListener("click", handleDDClick);
+countryDD.addEventListener("click", getFilterType);
+stateDD.addEventListener("click", getFilterType);
+cityDD.addEventListener("click", getFilterType);
 
 // generate rows for unfiltered data set upon initial page load
 generateRows(data);
 
 // generate dropdown lists
+// TODO: sort alphabetically
 distinctCities.forEach(i => {
   let cityFilter = document.getElementById('city-filter');
   generateDDItem(cityFilter, i);
@@ -40,13 +41,19 @@ distinctCountries.forEach(i => {
 });
 
 // determine which filter is being used
-function handleDDClick(e) {
-  let filterClicked = e.target.innerText;
+function getFilterType(e) {
+  let filterClicked = e.target.innerText.toLowerCase();
+  return filterClicked;
 }
 
-// filter data
+// filter data 
 function handleDDItemClick(e) {
+  // TODO: filter by state/country
   e.stopPropagation();
+
+  let filterClicked = getFilterType(e);
+  console.log(filterClicked);
+
   let clicked = e.target.innerHTML;
   let cityElements = document.querySelectorAll('.city');
 
