@@ -1,12 +1,11 @@
-// imports
 import { getData } from './data.js';
 
-// initialize global variables
 let data = getData();
 let dataTable = document.getElementById('tbody');
+let datePicker = document.querySelector('.date-picker');
 
-// generate rows for unfiltered data set upon initial page load
 generateRows(data);
+datePicker.addEventListener('click', handleClick);
 
 $('input[name="dates"]').daterangepicker({
     singleDatePicker: true,
@@ -19,15 +18,15 @@ $('input[name="dates"]').daterangepicker({
     generateRows(filterData);
 });
 
-let datePicker = document.querySelector('.date-picker');
-datePicker.addEventListener('click', e => {
+function handleClick(e) {
   let dates = document.querySelectorAll('.available')
   let outOfRange = document.querySelectorAll('.disabled')
   let tblHeaders = document.querySelectorAll('.table-condensed thead tr')
+
   dates.forEach(d => d.style.color = 'black')
   outOfRange.forEach(d => d.style.color = 'white')
   tblHeaders.forEach(d => d.style.color = 'black')
-});
+}
 
 function generateRows(data) {
   data.forEach(d => {
