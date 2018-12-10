@@ -31,7 +31,7 @@ function handleClick(e) {
 function generateRows(data) {
   data.forEach(d => {
     let row = document.createElement('tr')
-    row.setAttribute("class", "list-item")
+    row.setAttribute('class', 'list-item')
 
     row.innerHTML = `
       <td class="date">${d.datetime}</td>
