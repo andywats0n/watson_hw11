@@ -28,6 +28,7 @@ body {
   background: #4e5d6c;
 }
 
+
 /* The code styles the text at the bottom of the footer */
 .footer > .bottom {
   position: absolute;
@@ -136,6 +137,10 @@ select {
 .form-control:-moz-placeholder {
   /* Firefox 18- */
   color: #8e979f;
+}
+
+td {
+  color: black;
 }
 
 /* media queries which will only be activated at specific screen sizes */

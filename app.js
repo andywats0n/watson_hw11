@@ -69,12 +69,27 @@ generateRows(data);
 $('input[name="dates"]').daterangepicker({
     singleDatePicker: true,
     startDate: data[0].datetime,
-    endDate: data[data.length-1].datetime
+    endDate: data[data.length-1].datetime,
+    minDate: data[0].datetime,
+    maxDate: data[data.length-1].datetime,
 }, function(start, end, label) {
     let filterData = data.filter(x => x.datetime === start.format('M/D/YYYY'))
     dataTable.innerHTML = ``;
     generateRows(filterData);
 });
+
+let datePicker = document.querySelector('.date-picker');
+datePicker.addEventListener('click', e => {
+  console.log('clicked')
+  let dates = document.querySelectorAll('.available')
+  let outOfRange = document.querySelectorAll('.disabled')
+  let tblHeaders = document.querySelectorAll('.table-condensed thead tr')
+  dates.forEach(d => d.style.color = 'black')
+  outOfRange.forEach(d => d.style.color = 'white')
+  tblHeaders.forEach(d => d.style.color = 'black')
+  console.log(dates)
+});
+
 
 // helper functions
 // function generateDDItem(e, i) {
