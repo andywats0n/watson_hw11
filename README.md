@@ -1,3 +1,7 @@
+## Important! filtering only works when running on localhost
+
+VS Code live-server plugin: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+
 # Unit 14 | Assignment - JavaScript and DOM Manipulation
 
 ## Background

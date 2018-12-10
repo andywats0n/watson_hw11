@@ -18,6 +18,11 @@ body {
   overflow: auto;
 }
 
+.date-picker {
+  min-width:75%;
+  max-width:75%;
+}
+
 /* The footer is positioned at the bottom of the page */
 .footer {
   position: absolute;
