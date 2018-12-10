@@ -23,24 +23,24 @@ function handleClick(e) {
   let outOfRange = document.querySelectorAll('.disabled');
   let tblHeaders = document.querySelectorAll('.table-condensed thead tr');
 
-  dates.forEach(d => d.style.color = 'black');
-  outOfRange.forEach(d => d.style.color = 'white');
-  tblHeaders.forEach(d => d.style.color = 'black');
+  dates.forEach(element => element.style.color = 'black');
+  outOfRange.forEach(element => element.style.color = 'white');
+  tblHeaders.forEach(element => element.style.color = 'black');
 }
 
 function generateRows(data) {
-  data.forEach(d => {
+  data.forEach(row => {
     let row = document.createElement('tr')
     row.setAttribute('class', 'list-item')
 
     row.innerHTML = `
-      <td class="date">${d.datetime}</td>
-      <td class="city">${d.city}</td>
-      <td class="state">${d.state}</td>
-      <td class="country">${d.country}</td>
-      <td class="shape">${d.shape}</td>
-      <td class="duration">${d.durationMinutes}</td>
-      <td class="comment">${d.comments}</td>
+      <td class="date">${row.datetime}</td>
+      <td class="city">${row.city}</td>
+      <td class="state">${row.state}</td>
+      <td class="country">${row.country}</td>
+      <td class="shape">${row.shape}</td>
+      <td class="duration">${row.durationMinutes}</td>
+      <td class="comment">${row.comments}</td>
     `
 
     dataTable.appendChild(row)
