@@ -1,9 +1,3 @@
-## Important! filtering only works when running on localhost
-
-VS Code Live Server plugin: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
-
-Atom atom-live-server plugin: https://atom.io/packages/atom-live-server
-
 # Unit 14 | Assignment - JavaScript and DOM Manipulation
 
 ## Background
